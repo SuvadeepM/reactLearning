@@ -1,11 +1,6 @@
-
-
+import Suva from "./suva";
 function App() {
-  return (
-    <>
-      <h1>React App with vite | Suvadeep Mandal</h1>
-    </>
-  )
+  return <Suva />;
 }
 
-export default App
+export default App;
