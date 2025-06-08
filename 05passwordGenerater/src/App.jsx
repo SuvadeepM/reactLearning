@@ -1,29 +1,32 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from "react";
 
 function App() {
-  const [length, setLength] = useState(8) // useState
-  const [numberAllowed, setNumberAllowed] = useState(false)
-  const [charAllowed, setCharAllowed] = useState(false)
-  const [password, setPassword] = useState("")
-  const passwordRef = useRef(null) // useRef
+  const [length, setLength] = useState(8); // useState
+  const [numberAllowed, setNumberAllowed] = useState(false);
+  const [charAllowed, setCharAllowed] = useState(false);
+  const [password, setPassword] = useState("");
+  const passwordRef = useRef(null); // useRef
 
-  const copyPasswordToClipboard = useCallback(() => { // useCallback
-    passwordRef.current?.select() // to optionally select the value and for user-feedback
-    window.navigator.clipboard.writeText(password) // selec the window object
-  }, [password])
+  const copyPasswordToClipboard = useCallback(() => {
+    // useCallback
+    passwordRef.current?.select(); // to optionally select the value and for user-feedback
+    window.navigator.clipboard.writeText(password); // selec the window object
+  }, [password]);
 
-  useEffect(() => { // useEffect
+  useEffect(() => {
+    // useEffect
     // generate password logic here
-    let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    if (numberAllowed) charset += "0123456789"
-    if (charAllowed) charset += "!@#$%^&*()_+-=[]{}|;:,.<>?"
+    let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (numberAllowed) charset += "0123456789";
+    if (charAllowed) charset += "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
-    let pass = ""
-    for (let i = 0; i < length; i++) { // Password Generater 
-      pass += charset.charAt(Math.floor(Math.random() * charset.length))
+    let pass = "";
+    for (let i = 0; i < length; i++) {
+      // Password Generater
+      pass += charset.charAt(Math.floor(Math.random() * charset.length));
     }
-    setPassword(pass)
-  }, [length, numberAllowed, charAllowed])
+    setPassword(pass);
+  }, [length, numberAllowed, charAllowed]);
 
   return (
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
@@ -76,7 +79,7 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
